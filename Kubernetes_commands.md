@@ -9,6 +9,7 @@ $ kubect l get no - o yaml
 $ kubect l get node - - sel ect or =[ l abel _name]
 $ kubect l get nodes - o j sonpat h=' { . i t ems[ * ] . st at us. addr esses [ ?( @. t ype==" Ext er nal I P" ) ] . addr ess} '
 $ kubect l t op node [ node_name]
+
 # Pods
 $ kubect l get po
 $ kubect l get po - o wi de
@@ -53,15 +54,13 @@ $ kubect l get event s - w
 $ kubect l l ogs [ pod_name]
 $ kubect l l ogs - - si nce=1h [ pod_name]
 $ kubect l l ogs - - t ai l =20 [ pod_name]
-$ kubect l l ogs - f - c [ cont ai ner _name]
-[ pod_name]
+$ kubect l l ogs - f - c [ cont ai ner _name] [ pod_name]
 $ kubect l l ogs [ pod_name] > pod. l og
 
 # ServiceAccounts
 $ kubect l get sa
 $ kubect l get sa - o yaml
-$ kubect l get ser vi ceaccount s def aul t - o
-yaml > . / sa. yaml
+$ kubect l get ser vi ceaccount s def aul t - o yaml > . / sa. yaml
 $ kubect l r e
 
 # ReplicaSets
