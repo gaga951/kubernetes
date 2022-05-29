@@ -4,11 +4,16 @@ kubectl is the Kubernetes command-line tool.
 It allows us to run commands against Kubernetes clusters — deploying applications, inspecting and managing cluster resources, and viewing logs.
 
 
-### Kubectl Cheat Sheet – Viewing Nodes Information
+## Getting Cluster Info
 
-$ kubectl get no
+$ kubectl cluster-info
 
-$ kubectl get no -o wide
+
+### Viewing Nodes Information
+
+$ kubectl get nodes
+
+$ kubectl get nodes -o wide
 
 $ kubectl describe no
 
@@ -20,8 +25,9 @@ $ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type==”Extern
 
 $ kubectl top node [node_name]
 
+
  
-### Kubectl Cheat Sheet – Viewing Pods Information
+### Viewing Pods Information
 
 $ kubectl get po
 
@@ -45,6 +51,7 @@ Load WordPress Sites in as fast as 37ms!
 
 Kubectl Cheat Sheet – Viewing NameSpaces Information
 
+
 ### Namespaces
 
 $ kubectl get ns
@@ -53,7 +60,8 @@ $ kubectl get ns -o yaml
 
 $ kubectl describe ns
 
-### Kubectl Cheat Sheet – Viewing Deployments Information
+
+### Viewing Deployments Information
 
 $ kubectl get deploy
 
@@ -63,7 +71,7 @@ $ kubectl get deploy -o wide
 
 $ kubectl get deploy -o yam
 
-### Kubectl Cheat Sheet – Viewing Services Information
+### Viewing Services Information
 
 $ kubectl get svc
 
@@ -75,7 +83,7 @@ $ kubectl get svc -o yaml
 
 $ kubectl get svc –show-labels
 
-### Kubectl Cheat Sheet – Viewing DaemonSets Information
+### Viewing DaemonSets Information
 
 $ kubectl get ds
 
@@ -86,7 +94,7 @@ $ kubectl describe ds [daemonset _name] -n [namespace_name]
 $ kubectl get ds [ds_name] -n [ns_name] -o yaml
 
 
-### Kubectl Cheat Sheet – Viewing Events Information
+### Viewing Events Information
 
 $ kubectl get events
 
@@ -95,7 +103,7 @@ $ kubectl get events -n kube-system
 $ kubectl get events -w
 
 
-### Kubectl Cheat Sheet – Logs
+### Logs
 
 $ kubectl logs [pod_name]
 
@@ -108,7 +116,7 @@ $ kubectl logs -f -c [container_name] [pod_name]
 $ kubectl logs [pod_name] > pod.log
 
 
-### Kubectl Cheat Sheet – Service Accounts
+### Service Accounts
 
 $ kubectl get sa
 
@@ -119,7 +127,7 @@ $ kubectl get serviceaccounts default -o yaml > ./sa.yaml
 $ kubectl replace serviceaccount default -f. /sa.yaml
 
 
-### Kubectl Cheat Sheet – ReplicaSets
+### ReplicaSets
 
 $ kubectl get rs
 
@@ -130,13 +138,13 @@ $ kubectl get rs -o wide
 $ kubectl get rs -o yaml
 
 
-### Kubectl Cheat Sheet – Roles
+### Roles
 
 $ kubectl get roles –all-namespaces
 
 $ kubectl get roles –all-namespaces -o yaml
 
-### Kubernetes Cheat Sheet – Secrets
+### Secrets
 
 $ kubectl get secrets
 
@@ -144,7 +152,7 @@ $ kubectl get secrets –all-namespaces
 
 $ kubectl get secrets -o yaml
 
-### Kubectl Cheat Sheet – ConfigMaps
+### ConfigMaps
 
 $ kubectl get cm
 
@@ -152,7 +160,7 @@ $ kubectl get cm –all-namespaces
 
 $ kubectl get cm –all-namespaces -o yaml
 
-### Kubernetes Cheat Sheet – Ingress
+### Ingress
 
 $ kubectl get ing
 
@@ -168,13 +176,13 @@ $ kubectl get pvc
 
 $ kubectl describe pvc
 
-### Kubernetes Cheat Sheet – StorageClass
+### StorageClass
 
 $ kubectl get sc
 
 $ kubectl get sc -o yaml
 
-### Kubectl Cheat Sheet – MultipleResources
+### MultipleResources
 
 $ kubectl get svc, po
 
@@ -185,7 +193,7 @@ $ kubectl get all
 $ kubectl get all –all-namespaces
 
 
-### Kubectl Cheat Sheet – Changing Resource Attributes
+### Changing Resource Attributes
 
 ### Taint
 
@@ -207,7 +215,8 @@ $ kubectl uncordon [node_name]
 
 $ kubectl drain [node_name]
 
-### Kubernetes Cheat Sheet – Nodes/Pods
+
+### Nodes/Pods
 
 $ kubectl delete node [node_name]
 
@@ -218,7 +227,7 @@ $ kubectl edit node [node_name]
 $ kubectl edit pod [pod_name]
 
 
-### Kubectl Cheat Sheet – Deployments/Namespaces
+### Deployments/Namespaces
 
 $ kubectl edit deploy [deploy_name]
 $ kubectl delete deploy [deploy_name]
@@ -228,33 +237,33 @@ $ kubectl delete ns
 $ kubectl edit ns [ns_name]
 
 
-## Kubectl Cheat Sheet – Services
+## Services
 
 $ kubectl edit svc [svc_name]
 
 $ kubectl delete svc [svc_name]
 
-DaemonSets
+### DaemonSets
 
 $ kubectl edit ds [ds_name] -n kube-system
 
 $ kubectl delete ds [ds_name]
 
-ServiceAccounts
+### ServiceAccounts
 
 $ kubectl edit sa [sa_name]
 
 $ kubectl delete sa [sa_name]
 
-Annotate
+### Annotate
 
 $ kubectl annotate po [pod_name] [annotation]
 
 $ kubectl annotate no [node_name]
 
-Adding Resources
+### Adding Resources
 
-Kubectl Cheat Sheet – Creating a Pod
+### Creating a Pod
 
 $ kubectl create -f [name_of _file]
 
@@ -271,7 +280,7 @@ $ kubectl run [ pod_name] –image=nginx –restart=Never
 
 $ kubectl create svc nodeport [svc_name] –tcp=8080:80
 
-Kubernetes Cheat Sheet – Creating a Deployment
+### Kubernetes Cheat Sheet – Creating a Deployment
 
 $ kubectl create -f [name_of _file]
 
@@ -285,13 +294,13 @@ $ kubectl create deploy [deploy_name] –image=ngi nx
 $ kubectl run [pod_name] –image=busybox –rm -it –restart=Never — sh
 
 
-### Output YAMLto aFile
+### Output YAML to a File
 
 $ kubectl create deploy [deploy_name] –image=ngi nx –dry-run -o yaml > deploy.yaml
 
 $ kubectl get po [pod_name] -o yaml –export > pod. yaml
 
-### Kubectl Cheat Sheet – Getting Help
+### Getting Help
 
 $ kubectl -h
 
