@@ -362,15 +362,27 @@ $ kubectl get hpa
 
 $ kubectl set image deployment/deploy_name k8sphp=adv4000/k8sphp:version2 --record
 
+### To quick view running deploy/rollout status
+
 $ kubectl rollout status deployment/deploy_name 
+
+### Showing history of updates
 
 $ kubectl rollout history deployment/deploy_name
 
+### Rollout to prevoius version
+
 $ kubectl rollout undo deployment/deploy_name 
+
+### Rollout on specific chooesd version of history
 
 $ kubectl rollout undo deployment/deploy_name --to-revision=2
 
+### Redeploing current version of image (e.g. latest)
+
 $ kubectl rollout restart deployment/deploy_name 
+
+### Delete Deployment
 
 $ kubectl delete deployments deploy_name
 
