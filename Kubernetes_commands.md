@@ -19,11 +19,11 @@ $ kubectl describe no
 
 $ kubectl get no -o yaml
 
-$ kubectl get node –select or =[ label _name]
+$ kubectl get node –select or =label _name
 
 $ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type==”ExternalIP”)].address}’
 
-$ kubectl top node [node_name]
+$ kubectl top node node_name
 
 
  
@@ -51,9 +51,9 @@ $ kubectl get po -l app=nginx
 
 $ kubectl get po -o yaml
 
-$ kubect l get pod [ pod_name] -o yaml –export
+$ kubect l get pod pod_name -o yaml –export
 
-$ kubect l get pod [pod_name] -o yaml –export > nameoffile.yaml
+$ kubect l get pod pod_name -o yaml –export > file_name.yaml
 
 $ kubectl get pods –field-selector status.phase=Running
 
@@ -61,7 +61,18 @@ $ kubectl run POD_NAME -n NS_NAME --image=POD_IMAGE -- {command}
 
 $ kubectl run POD_NAME -n NS_NAME --image=POD_IMAGE --command {command}
 
---------------------------------------
+
+### Creating a Pod
+
+$ kubectl create -f name_of_file
+
+$ kubectl apply -f name_of_file
+
+$ kubectl run pod_name –image=ngi nx –restart=Never
+
+$ kubectl run pod_name –generator =run-pod/v1 –image=nginx
+
+$ kubectl run pod_name –image=nginx –restart=Never
 
 
 ### Viewing NameSpaces Information
@@ -325,44 +336,34 @@ $ kubectl annotate po [pod_name] [annotation]
 
 $ kubectl annotate no [node_name]
 
-### Adding Resources
-
-### Creating a Pod
-
-$ kubectl create -f [name_of _file]
-
-$ kubectl apply -f [name_of _file]
-
-$ kubectl run [pod_name] –image=ngi nx –restart=Never
-
-$ kubectl run [ pod_name] –generator =run-pod/v1 –image=nginx
-
-$ kubectl run [ pod_name] –image=nginx –restart=Never
 
 
-### Kubectl Cheat Sheet – Services Creating a Service
+### Services Creating a Service
 
 $ kubectl create svc nodeport [svc_name] –tcp=8080:80
 
-### Kubernetes Cheat Sheet – Creating a Deployment
 
-$ kubectl create -f [name_of _file]
+### Creating a Deployment
 
-$ kubectl apply -f [name_of _file]
+$ kubectl create -f name_of_file
 
-$ kubectl create deploy [deploy_name] –image=ngi nx
+$ kubectl apply -f name_of_file
+
+$ kubectl create deploy deploy_name –image=nginx:latest
+
+$ kubectl scale deployment deploy_name --replicas 4
 
 
 ### Interactive Pod
 
-$ kubectl run [pod_name] –image=busybox –rm -it –restart=Never — sh
+$ kubectl run pod_name –image=busybox –rm -it –restart=Never — sh
 
 
 ### Output YAML to a File
 
-$ kubectl create deploy [deploy_name] –image=ngi nx –dry-run -o yaml > deploy.yaml
+$ kubectl create deploy deploy_name –image=ngi nx –dry-run -o yaml > deploy.yaml
 
-$ kubectl get po [pod_name] -o yaml –export > pod. yaml
+$ kubectl get po pod_name -o yaml –export > pod. yaml
 
 ### Getting Help
 
