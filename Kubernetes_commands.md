@@ -31,9 +31,19 @@ $ kubectl top node [node_name]
 
 $ kubectl get po
 
+$ kubectl get pod
+
+$ kubectl get pods
+
+$ kubectl get pods --all-namespaces
+
+$ kubectl get pods -A
+
+$ kubectl get pods -n NS_NAME
+
 $ kubectl get po -o wide
 
-$ kubectl describe po
+$ kubectl describe pods POD_NAME -n NS_NAME
 
 $ kubectl get po –show-labels
 
@@ -47,29 +57,72 @@ $ kubect l get pod [pod_name] -o yaml –export > nameoffile.yaml
 
 $ kubectl get pods –field-selector status.phase=Running
 
-Load WordPress Sites in as fast as 37ms!
+$ kubectl run POD_NAME -n NS_NAME --image=POD_IMAGE -- {command}
 
-Kubectl Cheat Sheet – Viewing NameSpaces Information
+$ kubectl run POD_NAME -n NS_NAME --image=POD_IMAGE --command {command}
 
+--------------------------------------
+
+
+### Viewing NameSpaces Information
 
 ### Namespaces
 
-$ kubectl get ns
+$ kubectl get namespaces
+
+$ kubectl get namespaces --show-labels
+
+$ kubectl get ns NS_NAME
+
+$ kubectl describe ns NS_NAME
 
 $ kubectl get ns -o yaml
 
-$ kubectl describe ns
+## Working with other namespaces:
+
+$ kubectl get pods -n NS_NAME
+
+$ kubectl get rs -n NS_NAME
+
+$ kubectl get all -n NS_NAME
+
+## Getting Pods from All Namespaces:
+
+$ kubectl get pods -A
+
+$ kubectl get pods --all-namespaces
+
+## Creating/Deleting
+
+$ kubectl apply -f namespace.yaml
+
+$ kubectl create ns NS_NAME
+
+$ kubectl delete ns NS_NAME
+
+## Labeling Resources
+
+$ kubectl label RESOURCE_TYPE RESOURCE_NAME key=value
+
+------------------------------------------
 
 
 ### Viewing Deployments Information
 
 $ kubectl get deploy
 
-$ kubectl describe deploy
-
 $ kubectl get deploy -o wide
 
-$ kubectl get deploy -o yam
+kubectl get deploy --show-labels
+
+kubectl get deploy -n NS_NAME
+
+kubectl get deploy -o yaml
+
+kubectl describe deploy -n NS_NAME
+
+kubectl delete deploy NS_NAME
+
 
 ### Viewing Services Information
 
@@ -78,6 +131,8 @@ $ kubectl get svc
 $ kubectl describe svc
 
 $ kubectl get svc -o wide
+
+$ kubectl get svc --all-namespaces
 
 $ kubectl get svc -o yaml
 
@@ -229,12 +284,21 @@ $ kubectl edit pod [pod_name]
 
 ### Deployments/Namespaces
 
-$ kubectl edit deploy [deploy_name]
-$ kubectl delete deploy [deploy_name]
-$ kubectl expose deploy [depl oy_name] –port=80 –type=NodePort
-$ kubectl scale deploy [deploy_name] –replicas=5
+$ kubectl edit deploy deploy_name
+
+$ kubectl delete deploy deploy_name
+
+$ kubectl expose deploy deploy_name –port=80 –type=NodePort
+
+$ kubectl expose deployment pod-info-app --name=pod-info-svc --type=ClusterIP --port=80 –target-port=80
+
+$ kubectl expose deployment pod-info-app --name=pod-info-svc --type=ClusterIP --port=80 --target-port=80 --dry-run=client -o yaml
+
+$ kubectl scale deploy deploy_name –replicas=5
+
 $ kubectl delete ns
-$ kubectl edit ns [ns_name]
+
+$ kubectl edit ns ns_name
 
 
 ## Services
