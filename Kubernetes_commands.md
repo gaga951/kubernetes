@@ -337,7 +337,6 @@ $ kubectl annotate po [pod_name] [annotation]
 $ kubectl annotate no [node_name]
 
 
-
 ### Services Creating a Service
 
 $ kubectl create svc nodeport [svc_name] –tcp=8080:80
@@ -352,6 +351,29 @@ $ kubectl apply -f name_of_file
 $ kubectl create deploy deploy_name –image=nginx:latest
 
 $ kubectl scale deployment deploy_name --replicas 4
+
+### hotizontal pod autosaceler
+
+$ kubectl autoscale deployment deploy_name --min=4 --max=6 --cpu-precent=80
+
+$ kubectl get hpa
+
+### Rollout
+
+$ kubectl set image deployment/deploy_name k8sphp=adv4000/k8sphp:version2 --record
+
+$ kubectl rollout status deployment/deploy_name 
+
+$ kubectl rollout history deployment/deploy_name
+
+$ kubectl rollout undo deployment/deploy_name 
+
+$ kubectl rollout undo deployment/deploy_name --to-revision=2
+
+$ kubectl rollout restart deployment/deploy_name 
+
+$ kubectl delete deployments deploy_name
+
 
 
 ### Interactive Pod
