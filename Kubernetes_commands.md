@@ -1,29 +1,47 @@
-# ViewingResource Information
+# Viewing Resource Information
 
 ## Nodes
 
-$ kubect l get no
-$ kubect l get no - o wi de
-$ kubect l descr i be no
-$ kubect l get no - o yaml
-$ kubect l get node - - sel ect or =[ l abel _name]
-$ kubect l get nodes - o j sonpat h=' { . i t ems[ * ] . st at us. addr esses [ ?( @. t ype==" Ext er nal I P" ) ] . addr ess} '
-$ kubect l t op node [ node_name]
+$ kubectl get nodes
+
+$ kubectl get no - o wide
+
+$ kubectl describe nodes
+
+$ kubectl get nodes - o yaml
+
+$ kubectl get node -- selector =[label_name]
+
+$ kubectl get nodes - o jsonpath='{ . items[ * ] . status. addresses [ ?( @. t ype==" External IP" ) ] . address} '
+
+$ kubectl top node [ node_name]
 
 ## Pods
-$ kubect l get po
-$ kubect l get po - o wi de
-$ kubect l descr i be po
-$ kubect l get po - - show- l abel s
-$ kubect l get po - l app=ngi nx
-$ kubect l get po - o yaml
-$ kubect l get pod [ pod_name] - o yaml - - expor t
-$ kubect l get pod [ pod_name] - o yaml - - expor t > nameof f i l e. yaml
-$ kubect l get pods - - f i el d- sel ect or st at us. phase=Runni ng
+$ kubectl get po
+
+$ kubectl get po - o wide
+
+$ kubectl describe po
+
+$ kubectl get po --show-labels
+
+$ kubectl get po - l app=nginx
+
+$ kubectl get po - o yaml
+
+$ kubectl get pod [ pod_name] - o yaml - - export
+
+$ kubectl get pod [ pod_name] - o yaml - - export > nameof f i l e. yaml
+
+$ kubectl get pods --field- selector status. phase=Running
+
 
 ## Namespaces
+
 $ kubect l get ns
+
 $ kubect l get ns - o yaml
+
 $ kubect l descr i be ns
 
 ## Deployments
@@ -33,11 +51,11 @@ $ kubect l get depl oy - o wi de
 $ kubect l get depl oy - o yaml
 
 ## Services
-$ kubect l get svc
-$ kubect l descr i be svc
-$ kubect l get svc - o wi de
-$ kubect l get svc - o yaml
-$ kubect l get svc - - show- l abel s
+$ kubectl get svc
+$ kubectl describe svc
+$ kubectl get svc - o wide
+$ kubectl get svc - o yaml
+$ kubectl get svc --show-labels
 
 ## DaemonSets
 $ kubect l get ds
@@ -84,48 +102,48 @@ $ kubect l get cm - - al l - namespaces
 $ kubect l get cm - - al l - namespaces - o yaml
 
 ## Ingress
-$ kubect l get i ng
-$ kubect l get i ng - - al l - namespaces
+$ kubectl geting
+$ kubectl geting -- all -namespaces
 
 ## PersistentVolume
-$ kubect l get pv
-$ kubect l descr i be pv
+$ kubectl get pv
+$ kubectl describe pv
 
 ## PersistentVolumeClaim
-$ kubect l get pvc
-$ kubect l descr i be pvc
+$ kubectl get pvc
+$ kubectl describe pvc
 
 # ViewingResource Information (cont.)
 
 ## StorageClass
-$ kubect l get sc
-$ kubect l get sc - o yaml
+$ kubectl get sc
+$ kubectl get sc - o yaml
 
 ## MultipleResources
-$ kubect l get svc, po
-$ kubect l get depl oy, no
-$ kubect l get al l
-$ kubect l get al l - - al l - namespaces
+$ kubectl get svc, po
+$ kubectl get deploy, no
+$ kubectl get all
+$ kubectl get all -- all -namespaces
 
 # ChangingResourceAttributes
 
 ## Taint
-$ kubect l t ai nt [ node_name] [ t ai nt _name]
+$ kubectl taint [node_name] [ taint_name]
 
 ## Labels
-$ kubect l l abel [ node_name] di skt ype=ssd
-$ kubr ect l l abel [ pod_name] env=pr od
+$ kubectl label [ node_name] disk type=ssd
+$ kubectl label [ pod_name] env=prod
 
 ## Cordon/Uncordon
-$ kubect l cor don [ node_name]
-$ kubect l uncor don [ node_name]
+$ kubectl cordon [ node_name]
+$ kubectl uncordon [ node_name]
 
 ## Drain
-$ kubect l dr ai n [ node_name] Nodes/Pods
-$ kubect l del et e node [ node_name]
-$ kubect l del et e pod [ pod_name]
-$ kubect l edi t node [ node_name]
-$ kubect l edi t pod [ pod_name]
+$ kubectl drain [ node_name] Nodes/Pods
+$ kubectl delet e node [ node_name]
+$ kubectl delet e pod [ pod_name]
+$ kubectl edit node [ node_name]
+$ kubectl edit pod [ pod_name]
 
 ## Deployments/Namespaces
 $ kubect l edi t depl oy [ depl oy_name]
@@ -173,14 +191,14 @@ $ kubect l r un [ pod_name] - - i mage=busybox
 - - r m - i t - - r est ar t =Never - - sh
 
 ## Output YAML to a File
-$ kubect l cr eat e depl oy [ depl oy_name]- - i mage=ngi nx - - dr y- r un - o yaml >deploy. yaml
+$ kubectl creat edeploy [deploy_name] --image=nginx --dry-run - o yaml >deploy.yaml
 $ kubect l get po [ pod_name] - o yaml - - expor t > pod. yaml
 
 ## Getting Help
-$ kubect l - h
-$ kubect l cr eat e - h
-$ kubect l r un - h
-$ kubect l expl ai n depl oy. spec
+$ kubectl - h
+$ kubectl create - h
+$ kubectl run - h
+$ kubectl explain deploy.spec
 
 # Requests
 
