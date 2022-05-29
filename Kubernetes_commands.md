@@ -1,213 +1,314 @@
-# Viewing Resource Information
+### What is Kubectl?
 
-## Nodes
+kubectl is the Kubernetes command-line tool. 
+It allows us to run commands against Kubernetes clusters — deploying applications, inspecting and managing cluster resources, and viewing logs.
 
-$ kubectl get nodes
 
-$ kubectl get no - o wide
+### Kubectl Cheat Sheet – Viewing Nodes Information
 
-$ kubectl describe nodes
+$ kubectl get no
 
-$ kubectl get nodes - o yaml
+$ kubectl get no -o wide
 
-$ kubectl get node -- selector =[label_name]
+$ kubectl describe no
 
-$ kubectl get nodes - o jsonpath='{ . items[ * ] . status. addresses [ ?( @. t ype==" External IP" ) ] . address} '
+$ kubectl get no -o yaml
 
-$ kubectl top node [ node_name]
+$ kubectl get node –select or =[ label _name]
 
-## Pods
+$ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type==”ExternalIP”)].address}’
+
+$ kubectl top node [node_name]
+
+ 
+### Kubectl Cheat Sheet – Viewing Pods Information
+
 $ kubectl get po
 
-$ kubectl get po - o wide
+$ kubectl get po -o wide
 
 $ kubectl describe po
 
-$ kubectl get po --show-labels
+$ kubectl get po –show-labels
 
-$ kubectl get po - l app=nginx
+$ kubectl get po -l app=nginx
 
-$ kubectl get po - o yaml
+$ kubectl get po -o yaml
 
-$ kubectl get pod [ pod_name] - o yaml - - export
+$ kubect l get pod [ pod_name] -o yaml –export
 
-$ kubectl get pod [ pod_name] - o yaml - - export > nameof f i l e. yaml
+$ kubect l get pod [pod_name] -o yaml –export > nameoffile.yaml
 
-$ kubectl get pods --field- selector status. phase=Running
+$ kubectl get pods –field-selector status.phase=Running
 
+Load WordPress Sites in as fast as 37ms!
 
-## Namespaces
+Kubectl Cheat Sheet – Viewing NameSpaces Information
 
-$ kubect l get ns
+### Namespaces
 
-$ kubect l get ns - o yaml
+$ kubectl get ns
 
-$ kubect l descr i be ns
+$ kubectl get ns -o yaml
 
-## Deployments
-$ kubect l get depl oy
-$ kubect l descr i be depl oy
-$ kubect l get depl oy - o wi de
-$ kubect l get depl oy - o yaml
+$ kubectl describe ns
 
-## Services
+### Kubectl Cheat Sheet – Viewing Deployments Information
+
+$ kubectl get deploy
+
+$ kubectl describe deploy
+
+$ kubectl get deploy -o wide
+
+$ kubectl get deploy -o yam
+
+### Kubectl Cheat Sheet – Viewing Services Information
+
 $ kubectl get svc
+
 $ kubectl describe svc
-$ kubectl get svc - o wide
-$ kubectl get svc - o yaml
-$ kubectl get svc --show-labels
 
-## DaemonSets
-$ kubect l get ds
-$ kubect l get ds - - al l - namespaces
-$ kubect l descr i be ds [ daemonset _name] - n [ namespace_name]
-$ kubect l get ds [ ds_name] - n [ ns_name] - o yaml
+$ kubectl get svc -o wide
 
-## Events
-$ kubect l get event s
-$ kubect l get event s - n kube- syst em
-$ kubect l get event s - w
+$ kubectl get svc -o yaml
 
-## Logs
-$ kubect l l ogs [ pod_name]
-$ kubect l l ogs - - si nce=1h [ pod_name]
-$ kubect l l ogs - - t ai l =20 [ pod_name]
-$ kubect l l ogs - f - c [ cont ai ner _name] [ pod_name]
-$ kubect l l ogs [ pod_name] > pod. l og
+$ kubectl get svc –show-labels
 
-## ServiceAccounts
-$ kubect l get sa
-$ kubect l get sa - o yaml
-$ kubect l get ser vi ceaccount s def aul t - o yaml > . / sa. yaml
-$ kubect l r e
+### Kubectl Cheat Sheet – Viewing DaemonSets Information
 
-## ReplicaSets
-$ kubect l get r s
-$ kubect l descr i be r s
-$ kubect l get r s - o wi de
-$ kubect l get r s - o yaml
+$ kubectl get ds
 
-## Roles
-$ kubect l get r ol es - - al l - namespaces
-$ kubect l get r ol es - - al l - namespaces - o yaml
+$ kubectl get ds –all-namespaces
 
-## Secrets
-$ kubect l get secr et s
-$ kubect l get secr et s - - al l - namespaces
-$ kubect l get secr et s - o yaml
+$ kubectl describe ds [daemonset _name] -n [namespace_name]
 
-## ConfigMaps
-$ kubect l get cm
-$ kubect l get cm - - al l - namespaces
-$ kubect l get cm - - al l - namespaces - o yaml
+$ kubectl get ds [ds_name] -n [ns_name] -o yaml
 
-## Ingress
-$ kubectl geting
-$ kubectl geting -- all -namespaces
 
-## PersistentVolume
+### Kubectl Cheat Sheet – Viewing Events Information
+
+$ kubectl get events
+
+$ kubectl get events -n kube-system
+
+$ kubectl get events -w
+
+
+### Kubectl Cheat Sheet – Logs
+
+$ kubectl logs [pod_name]
+
+$ kubectl logs –since=1h [pod_name]
+
+$ kubectl logs –tail =20 [pod_name]
+
+$ kubectl logs -f -c [container_name] [pod_name]
+
+$ kubectl logs [pod_name] > pod.log
+
+
+### Kubectl Cheat Sheet – Service Accounts
+
+$ kubectl get sa
+
+$ kubectl get sa -o yaml
+
+$ kubectl get serviceaccounts default -o yaml > ./sa.yaml
+
+$ kubectl replace serviceaccount default -f. /sa.yaml
+
+
+### Kubectl Cheat Sheet – ReplicaSets
+
+$ kubectl get rs
+
+$ kubectl describe rs
+
+$ kubectl get rs -o wide
+
+$ kubectl get rs -o yaml
+
+
+### Kubectl Cheat Sheet – Roles
+
+$ kubectl get roles –all-namespaces
+
+$ kubectl get roles –all-namespaces -o yaml
+
+### Kubernetes Cheat Sheet – Secrets
+
+$ kubectl get secrets
+
+$ kubectl get secrets –all-namespaces
+
+$ kubectl get secrets -o yaml
+
+### Kubectl Cheat Sheet – ConfigMaps
+
+$ kubectl get cm
+
+$ kubectl get cm –all-namespaces
+
+$ kubectl get cm –all-namespaces -o yaml
+
+### Kubernetes Cheat Sheet – Ingress
+
+$ kubectl get ing
+
+$ kubectl get ing –all-namespaces
+
+Kubectl Cheat Sheet – PersistentVolume
+
 $ kubectl get pv
+
 $ kubectl describe pv
 
-## PersistentVolumeClaim
 $ kubectl get pvc
+
 $ kubectl describe pvc
 
-# ViewingResource Information (cont.)
+### Kubernetes Cheat Sheet – StorageClass
 
-## StorageClass
 $ kubectl get sc
-$ kubectl get sc - o yaml
 
-## MultipleResources
+$ kubectl get sc -o yaml
+
+### Kubectl Cheat Sheet – MultipleResources
+
 $ kubectl get svc, po
+
 $ kubectl get deploy, no
+
 $ kubectl get all
-$ kubectl get all -- all -namespaces
 
-# ChangingResourceAttributes
+$ kubectl get all –all-namespaces
 
-## Taint
-$ kubectl taint [node_name] [ taint_name]
 
-## Labels
-$ kubectl label [ node_name] disk type=ssd
-$ kubectl label [ pod_name] env=prod
+### Kubectl Cheat Sheet – Changing Resource Attributes
 
-## Cordon/Uncordon
-$ kubectl cordon [ node_name]
-$ kubectl uncordon [ node_name]
+### Taint
 
-## Drain
-$ kubectl drain [ node_name] Nodes/Pods
-$ kubectl delet e node [ node_name]
-$ kubectl delet e pod [ pod_name]
-$ kubectl edit node [ node_name]
-$ kubectl edit pod [ pod_name]
+$ kubectl taint [node_name] [taint _name]
 
-## Deployments/Namespaces
-$ kubect l edi t depl oy [ depl oy_name]
-$ kubect l del et e depl oy [ depl oy_name]
-$ kubect l expose depl oy [ depl oy_name] - - por t =80 - - t ype=NodePor t
-$ kubect l scal e depl oy [ depl oy_name] - - r epl i cas=5
-$ kubect l del et e ns
-$ kubect l edi t ns [ ns_name]
+### Labels
 
-## Services
-$ kubect l edi t svc [ svc_name]
-$ kubect l del et e svc [ svc_name]
+$ kubectl label [node_name] disktype=ssd
 
-## DaemonSets
-$ kubect l edi t ds [ ds_name] - n kube- syst em
-$ kubect l del et e ds [ ds_name]
+$ kubrectl label [pod_name] env=prod
 
-## ServiceAccounts
-$ kubect l edi t sa [ sa_name]
-$ kubect l del et e sa [ sa_name]
+### Cordon/Uncordon
 
-## Annotate
-$ kubect l annot at e po [ pod_name] [ annot at i on]
-$ kubect l annot at e no [ node_name]
+$ kubectl cordon [node_name]
 
-# AddingResources
+$ kubectl uncordon [node_name]
 
-## CreatingaPod
-$ kubect l cr eat e - f [ name_of _f i l e]
-$ kubect l appl y - f [ name_of _f i l e]
-$ kubect l r un [ pod_name] - - i mage=ngi nx - - r est ar t =Never
-$ kubect l r un [ pod_name] - - gener at or =r un- pod/ v1 - - i mage=ngi nx
-$ kubect l r un [ pod_name] - - i mage=ngi nx - - r est ar t =Never
+### Drain
 
-## CreatingaService
-$ kubect l cr eat e svc nodepor t [ svc_name] - - t cp=8080: 80
+$ kubectl drain [node_name]
 
-## CreatingaDeployment
-$ kubect l cr eat e - f [ name_of _f i l e]
-$ kubect l appl y - f [ name_of _f i l e]
-$ kubect l cr eat e depl oy [ depl oy_name] - - i mage=ngi nx
+### Kubernetes Cheat Sheet – Nodes/Pods
 
-## InteractivePod
-$ kubect l r un [ pod_name] - - i mage=busybox
-- - r m - i t - - r est ar t =Never - - sh
+$ kubectl delete node [node_name]
 
-## Output YAML to a File
-$ kubectl creat edeploy [deploy_name] --image=nginx --dry-run - o yaml >deploy.yaml
-$ kubect l get po [ pod_name] - o yaml - - expor t > pod. yaml
+$ kubectl delete pod [pod_name]
 
-## Getting Help
-$ kubectl - h
-$ kubectl create - h
-$ kubectl run - h
+$ kubectl edit node [node_name]
+
+$ kubectl edit pod [pod_name]
+
+
+### Kubectl Cheat Sheet – Deployments/Namespaces
+
+$ kubectl edit deploy [deploy_name]
+$ kubectl delete deploy [deploy_name]
+$ kubectl expose deploy [depl oy_name] –port=80 –type=NodePort
+$ kubectl scale deploy [deploy_name] –replicas=5
+$ kubectl delete ns
+$ kubectl edit ns [ns_name]
+
+
+## Kubectl Cheat Sheet – Services
+
+$ kubectl edit svc [svc_name]
+
+$ kubectl delete svc [svc_name]
+
+DaemonSets
+
+$ kubectl edit ds [ds_name] -n kube-system
+
+$ kubectl delete ds [ds_name]
+
+ServiceAccounts
+
+$ kubectl edit sa [sa_name]
+
+$ kubectl delete sa [sa_name]
+
+Annotate
+
+$ kubectl annotate po [pod_name] [annotation]
+
+$ kubectl annotate no [node_name]
+
+Adding Resources
+
+Kubectl Cheat Sheet – Creating a Pod
+
+$ kubectl create -f [name_of _file]
+
+$ kubectl apply -f [name_of _file]
+
+$ kubectl run [pod_name] –image=ngi nx –restart=Never
+
+$ kubectl run [ pod_name] –generator =run-pod/v1 –image=nginx
+
+$ kubectl run [ pod_name] –image=nginx –restart=Never
+
+
+### Kubectl Cheat Sheet – Services Creating a Service
+
+$ kubectl create svc nodeport [svc_name] –tcp=8080:80
+
+Kubernetes Cheat Sheet – Creating a Deployment
+
+$ kubectl create -f [name_of _file]
+
+$ kubectl apply -f [name_of _file]
+
+$ kubectl create deploy [deploy_name] –image=ngi nx
+
+
+### Interactive Pod
+
+$ kubectl run [pod_name] –image=busybox –rm -it –restart=Never — sh
+
+
+### Output YAMLto aFile
+
+$ kubectl create deploy [deploy_name] –image=ngi nx –dry-run -o yaml > deploy.yaml
+
+$ kubectl get po [pod_name] -o yaml –export > pod. yaml
+
+### Kubectl Cheat Sheet – Getting Help
+
+$ kubectl -h
+
+$ kubectl create -h
+
+$ kubectl run -h
+
 $ kubectl explain deploy.spec
 
-# Requests
+### Requests API Call
 
-## APICall
-$ kubect l get - - r aw / api s/ met r i cs. k8s. i o/
+$ kubectl get –raw /apis/metrics.k8s.io/
 
-## Cluster Info
-$ kubect l conf i g
-$ kubect l cl ust er - i nf o
-$ kubect l get component st at uses
+### Cluster Info
 
+$ kubectl config
 
+$ kubectl cluster -info
+
+$ kubectl get componentstatuses
