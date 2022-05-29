@@ -1,3 +1,13 @@
+
+$ kubectl apply -f file_name.yaml
+
+$ kubectl delete -f file_name.yaml
+
+
+$ kubectl port-forward pod_name 8888:80
+
+--------------------------------
+
 ### namespace.yaml:
 ---
 apiVersion: v1
@@ -5,8 +15,8 @@ kind: Namespace
 metadata:
   name: GGa-1
   labels:
-    cost_object: "1200"
-    team_code: GGa
+    env: prod
+    team: GGa
 ---
 
 ### Pod Manifest Example:
