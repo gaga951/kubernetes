@@ -1,0 +1,37 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: my-web-deployment
+  labels:
+    app : my-k8s-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: project2
+  template:
+    metadata:
+      labels:
+        project: project2   # Service will look PODS Labels
+    spec:
+      containers:
+        - name : project2-web
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-single-pod-service
+  labels:
+    env  : production
+spec:
+  selector:
+    project: project2    # Selecting PODS with those Labels
+  ports:
+    - name      : app-listener
+      protocol  : TCP
+      port      : 80  # Port on Load Balancer
+      targetPort: 80  # Port on POD
+  type: LoadBalancer
