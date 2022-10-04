@@ -29,3 +29,15 @@ $ k3d cluster create multinodecluster --agents 3 --servers 1
 $ k3d node create myagent --role agent --cluster multinodecluster
 
 $ k3d --help
+
+
+kubectl cluster-info
+
+kubectl -n kube-system get all
+
+kubectl top nodes
+
+kubectl top nodes --all-namespaces
+
+
+
