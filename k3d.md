@@ -30,14 +30,15 @@ $ k3d node create myagent --role agent --cluster multinodecluster
 
 $ k3d --help
 
+##############################
 
-kubectl cluster-info
+$ kubectl cluster-info
 
-kubectl -n kube-system get all
+$ kubectl -n kube-system get all
 
-kubectl top nodes
+$ kubectl top nodes
 
-kubectl top nodes --all-namespaces
+$ kubectl top pod --all-namespaces
 
 
 
